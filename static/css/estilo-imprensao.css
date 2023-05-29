@@ -1,0 +1,23 @@
+/* Arquivo estilo.css*/
+body {
+    background-color: #ddd;
+    color: #444;
+    font-family: "Helvetica Neue";
+    line-height: 1.5;
+    width: 50%;
+    margin: 0px auto;
+    padding: 20px;
+}
+main {
+    background-color: rgb(255, 255, 255);
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 10px;
+}
+section {
+    border-top: 1px inset #ddd;
+}
+h3, h4 {
+    color: rgb(140, 76, 8);
+    margin-top: 0;
+}

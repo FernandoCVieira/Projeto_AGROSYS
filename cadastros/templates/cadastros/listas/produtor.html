@@ -1,0 +1,38 @@
+{% extends 'paginas/modelo-principal.html' %}
+{% block conteudo %}
+
+<h3>
+    Lista de produtores registrados
+    <a href="{% url 'cadastrar-produtor' %}" class="btn btn-primary btn-sm float-right">Adicionar um produtor</a>
+</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Nome</th>
+            <th>Propriedade</th>
+            <th>Responsáveis Técnicos</th>
+            <th>Opções</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.nome_rural }}</td>
+            <td>{{ object.propriedade_local }}</td>
+            <td>{{ object.responsaveis_tecnicos }}</td>
+            <td>
+                <a href="{% url 'editar-produtor' object.pk %}" class="btn btn-warning btn-sm" title="Editar">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'excluir-produtor' object.pk %}" class="btn btn-danger btn-sm" title="Excluir">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">Nenhum produtor registrado.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends 'paginas/modelo-print.html' %}
+{% load static %}
+
+{% block tecnico %}
+    {% for models in object_list %}
+        <p><strong>Nome:</strong> <strong>{{ models.nome_tecnico }}</strong></p>
+        <p><strong>CPF/CNPJ:</strong> {{ models.cnpj_tecnico }}</p>
+        <p><strong>Número CREA/CFTA: </strong> {{ models.numero_registro }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block produtor %}
+    {% for models in object_list %}
+        <p><strong>Nome:</strong> <strong>{{ models.nome_rural }}</strong></p>
+        <p><strong>Propriedade:<strong> </strong>{{ models.propriedade_local }}</strong></p>
+        <p><strong>Local de Aplicação:<strong> </strong>{{ models.local }}</strong></p>
+        <p><strong>CPF/CNPJ:</strong> {{ models.cnpj_propriedade }}</p>
+        <p><strong>Latitude:</strong> {{ models.latitude }}</p>
+        <p><strong>Logitude:</strong> {{ models.logitude }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block DIAGNÓSTICO %}
+    {% for models in object_list %}
+        <p><strong>Cultura:</strong> {{ models.cultura }}</p>
+        <p><strong>Produto Comercial:</strong> {{ models.produto_comercial }}</p>
+        <p><strong>Alvo:</strong> {{models.alvo}} </p>
+        <p><strong>Área a Tratar:</strong> {{ models.area_a_tratar }} </p>
+        <p><strong>Volume da Calda:</strong> {{ models.volume_da_calda }}</p>
+        <p><strong>Intervalo de Seguranca:</strong> {{ models.intervalo_de_seguranca }}</p>
+        <p><strong>Modalidade Aplicação:</strong> {{ models.modalidade_aplicacao }}</p>
+        <p><strong>Equipamento Aplicação:</strong> {{ models.equipamento_aplicacao }}</p>
+        <p><strong>Quantidade a Adquirir:</strong> {{ models.quantidade_a_adquirir }}</p>
+        <p><strong>Nr Aplicações:</strong> {{ models.n_aplicacoes }}</p>
+        <p><strong>Época Aplicação:</strong> {{ models.epoca_aplicacao }}</p>
+    {% endfor %}
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/jquery.mask.min.js' %}"></script>
+<script>
+
+</script>
+{% endblock %}

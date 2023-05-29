@@ -1,0 +1,44 @@
+{% extends 'paginas/modelo-principal.html' %}
+{% block conteudo %}
+
+<h3>
+    Lista de propriedade registradas
+    <a href="{% url 'cadastrar-propriedade' %}" class="btn btn-primary btn-sm float-right">Adicionar um propriedade</a>
+</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Produtor Rural</th>
+            <th>Descrição</th>
+            <th>CNPJ</th>
+            <th>Local</th>
+            <th>Latitude</th>
+            <th>Lontitude</th>
+            <th>Opções</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.produtor_rural }}</td>
+            <td>{{ object.descricao }}</td>
+            <td>{{ object.cnpj_propriedade }}</td>
+            <td>{{ object.local }}</td>
+            <td>{{ object.latitude }}</td>
+            <td>{{ object.longitude }}</td>
+            <td>
+                <a href="{% url 'editar-propriedade' object.pk %}" class="btn btn-warning btn-sm" title="Editar">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'excluir-propriedade' object.pk %}" class="btn btn-danger btn-sm" title="Excluir">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="7">Nenhuma propriedade registrada.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

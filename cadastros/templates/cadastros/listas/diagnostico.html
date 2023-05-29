@@ -1,0 +1,56 @@
+{% extends 'paginas/modelo-principal.html' %}
+{% block conteudo %}
+
+<h3>
+    Diagnosticso registrados
+    <a href="{% url 'cadastrar-diagnostico' %}" class="btn btn-primary btn-sm float-right">Adicionar um novo diagnosticso</a>
+</h3>
+<hr>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>Propriedade</th>
+            <th>Cultura</th>
+            <th>Produto Comercial</th>
+            <th>Alvo</th>
+            <th>Área a tratar</th>
+            <th>Volume da calda</th>
+            <th>Intervalo de Seguranca</th>
+            <th>Intervalo de aplicação</th>
+            <th>Modalidade Aplicaçao</th>
+            <th>Auantidade a Adquirir</th>
+            <th>Nr Aplicações</th>
+            <th>Época Aplicação</th>
+            <th>Opções</th>
+        </tr>
+        {% for object in object_list %}
+        <tr>
+            <td>{{ object.propriedade }}</td>
+            <td>{{ object.cultura }}</td>
+            <td>{{ object.produto_comercial }}</td>
+            <td>{{ object.alvo }}</td>
+            <td>{{ object.area_a_tratar }}</td>
+            <td>{{ object.volume_da_calda }}</td>
+            <td>{{ object.intervalo_de_seguranca }}</td>
+            <td>{{ object.modalidade_aplicacao }}</td>
+            <td>{{ object.equipamento_aplicacao }}</td>
+            <td>{{ object.quantidade_a_adquirir }}</td>
+            <td>{{ object.n_aplicacoes }}</td>
+            <td>{{ object.epoca_aplicacao }}</td>
+            <td>
+                <a href="{% url 'editar-diagnostico' object.pk %}" class="btn btn-warning btn-sm" title="Editar">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+                <a href="{% url 'excluir-diagnostico' object.pk %}" class="btn btn-danger btn-sm" title="Excluir">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                </a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="13">Nenhuma propriedade registrada.</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
